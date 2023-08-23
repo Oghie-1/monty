@@ -61,6 +61,8 @@ printStack(stack);
 } else if (strcmp(opcode, "pint") == 0) { /*Implement pint Operation */
 printf("Executing pint\n"); /* Debug print */
 pint(stack);
+} else if (strcmp(opcode, "swap") == 0) { /* Implement swap operation */
+swap(stack);
 } else {
 fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 freeStack(stack);

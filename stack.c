@@ -13,6 +13,17 @@ stack->top = NULL;
 return stack;
 }
 
+void swap(Stack *stack) {
+if (stack->top == NULL || stack->top->next == NULL) {
+fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+int temp = stack->top->data;
+stack->top->data = stack->top->next->data;
+stack->top->next->data = temp;
+}
+
+
 void pint(Stack *stack) {
 if (stack->top == NULL) {
 fprintf(stderr, "L: can't pint, stack empty\n");
