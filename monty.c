@@ -58,6 +58,9 @@ push(stack, value);
 pop(stack);
 } else if (strcmp(opcode, "pall") == 0) { /*Implement Pall Operation*/
 printStack(stack);
+} else if (strcmp(opcode, "pint") == 0) { /*Implement pint Operation */
+printf("Executing pint\n"); /* Debug print */
+pint(stack);
 } else {
 fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 freeStack(stack);

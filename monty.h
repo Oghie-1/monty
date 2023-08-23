@@ -19,6 +19,7 @@ Node *top;
 Stack *createStack();
 void push(Stack *stack, int value);
 int pop(Stack *stack);
+void pint(Stack *stack);
 void freeStack(Stack *stack);
 void printStack(Stack *stack);
 int main(int argc, char *argv[]);

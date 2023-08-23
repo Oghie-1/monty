@@ -13,6 +13,14 @@ stack->top = NULL;
 return stack;
 }
 
+void pint(Stack *stack) {
+if (stack->top == NULL) {
+fprintf(stderr, "L: can't pint, stack empty\n");
+exit(EXIT_FAILURE);
+}
+printf("%d\n", stack->top->data);
+}
+
 void push(Stack *stack, int value) {
 Node *newNode = (Node *)malloc(sizeof(Node));
 if (!newNode) {
