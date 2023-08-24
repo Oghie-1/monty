@@ -13,6 +13,20 @@ stack->top = NULL;
 return stack;
 }
 
+void mul(Stack *stack, int line_number) {
+int factor;
+int product;
+
+if (stack->top == NULL || stack->top->next == NULL) {
+fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+factor = stack->top->data;
+product = stack->top->next->data * factor;
+pop(stack); /* Remove the top element */
+stack->top->data = product;
+}
+
 void swap(Stack *stack, int line_number) {
 int temp;
 if (stack->top == NULL || stack->top->next == NULL) {
@@ -23,6 +37,37 @@ exit(EXIT_FAILURE);
 temp = stack->top->data;
 stack->top->data = stack->top->next->data;
 stack->top->next->data = temp;
+}
+
+void monty_div(Stack *stack, int line_number) {
+int divisor;
+int quotient;
+if (stack->top == NULL || stack->top->next == NULL) {
+fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+divisor = stack->top->data;
+if (divisor == 0) {
+fprintf(stderr, "L%d: division by zero\n", line_number);
+exit(EXIT_FAILURE);
+}
+quotient = stack->top->next->data / divisor;
+pop(stack); /* Remove the top element */
+stack->top->data = quotient;
+}
+
+void sub(Stack *stack, int line_number) {
+int subtrahend;
+int minuend;
+int result;
+if (stack->top == NULL || stack->top->next == NULL) {
+fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+subtrahend = pop(stack);
+minuend = pop(stack);
+result = minuend - subtrahend;
+push(stack, result);
 }
 
 void nop() {

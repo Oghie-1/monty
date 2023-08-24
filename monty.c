@@ -61,6 +61,12 @@ printStack(stack);
 } else if (strcmp(opcode, "pint") == 0) { /*Implement pint Operation */
 printf("Executing pint\n"); /* Debug print */
 pint(stack);
+} else if (strcmp(opcode, "monty_div") == 0) { /* Implement swap operation */
+monty_div(stack, line_number);
+} else if (strcmp(opcode, "mul") == 0) { /* Implement mul operation */
+mul(stack, line_number);
+} else if (strcmp(opcode, "sub") == 0) { /* Implement sub operation */
+sub(stack, line_number);
 } else if (strcmp(opcode, "swap") == 0) { /* Implement swap operation */
 swap(stack, line_number);
 }else if (strcmp(opcode, "add") == 0) {

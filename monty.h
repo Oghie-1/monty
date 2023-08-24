@@ -26,6 +26,9 @@ int main(int argc, char *argv[]);
 void swap(Stack *stack, int line_number);
 void add(Stack *stack, int line_number);
 void nop();
+void sub(Stack *stack, int line_number);
+void monty_div(Stack *stack, int line_number);
+void mul(Stack *stack, int line_number);
 
 
 /**
