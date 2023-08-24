@@ -13,6 +13,41 @@ stack->top = NULL;
 return stack;
 }
 
+void pchar(Stack *stack, int line_number) {
+int ascii_value;
+if (stack->top == NULL) {
+fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+exit(EXIT_FAILURE);
+}
+ascii_value = stack->top->data;
+
+if (ascii_value < 0 || ascii_value > 127) {
+fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
+exit(EXIT_FAILURE);
+}
+
+putchar(ascii_value);
+putchar('\n');
+}
+
+void mod(Stack *stack, int line_number) {
+int divisor;
+int dividend;
+int result;
+if (stack->top == NULL || stack->top->next == NULL) {
+fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+exit(EXIT_FAILURE);
+}
+divisor = pop(stack);
+dividend = pop(stack);
+if (divisor == 0) {
+fprintf(stderr, "L%d: division by zero\n", line_number);
+exit(EXIT_FAILURE);
+}
+result = dividend % divisor;
+push(stack, result);
+}
+
 void mul(Stack *stack, int line_number) {
 int factor;
 int product;
@@ -37,6 +72,17 @@ exit(EXIT_FAILURE);
 temp = stack->top->data;
 stack->top->data = stack->top->next->data;
 stack->top->next->data = temp;
+}
+
+void pstr(Stack *stack) {
+Node *current = stack->top;
+
+while (current != NULL && current->data > 0 && current->data <= 127) {
+putchar(current->data);
+current = current->next;
+}
+
+putchar('\n');
 }
 
 void monty_div(Stack *stack, int line_number) {

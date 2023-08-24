@@ -29,7 +29,9 @@ void nop();
 void sub(Stack *stack, int line_number);
 void monty_div(Stack *stack, int line_number);
 void mul(Stack *stack, int line_number);
-
+void pchar(Stack *stack, int line_number);
+void mod(Stack *stack, int line_number);
+void pstr(Stack *stack);
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)

@@ -40,11 +40,13 @@ while (fgets(line, sizeof(line), file) != NULL) {
 line_number++;
 
 opcode = strtok(line, " \t\n");
-if (!opcode) {
-continue; /* Empty line */
+if (opcode == NULL || opcode[0] == '#') {
+continue; /* Empty line or line that start with #*/
 }
 argument = strtok(NULL, " \t\n");
-
+if (strcmp(opcode, "pstr") == 0) {
+pstr(stack);
+}
 if (strcmp(opcode, "push") == 0) {
 if (!argument) {
 fprintf(stderr, "L%d: missing argument for push\n", line_number);
@@ -69,8 +71,12 @@ mul(stack, line_number);
 sub(stack, line_number);
 } else if (strcmp(opcode, "swap") == 0) { /* Implement swap operation */
 swap(stack, line_number);
+} else if (strcmp(opcode, "mod") == 0) { /* Implement swap operation */
+mod(stack, line_number);
 }else if (strcmp(opcode, "add") == 0) {
 add(stack, line_number);
+}else if (strcmp(opcode, "pchar") == 0) {
+pchar(stack, line_number);
 } else if (strcmp(opcode, "nop") == 0) { /* Implement nop operation */
 nop(stack);
 } else {
