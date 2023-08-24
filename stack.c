@@ -85,6 +85,27 @@ current = current->next;
 putchar('\n');
 }
 
+/**
+ * rotl - Rotates the stack to the top.
+ * @stack: Double pointer to the top of the stack.
+ * @line_number: Line number of the opcode in the Monty file.
+ */
+void rotl(Stack **stack, int line_number) {
+(void)line_number; /* Avoid unused parameter warning */
+
+if (*stack && (*stack)->top && (*stack)->top->next) {
+Node *first = (*stack)->top;
+Node *second = first->next;
+Node *temp = first;
+
+while (temp->next) {
+temp = temp->next;
+temp->next = first;
+first->next = NULL;
+(*stack)->top = second;
+}
+}
+}
 void monty_div(Stack *stack, int line_number) {
 int divisor;
 int quotient;
