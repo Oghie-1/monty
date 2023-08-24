@@ -31,8 +31,10 @@ void monty_div(Stack *stack, int line_number);
 void mul(Stack *stack, int line_number);
 void pchar(Stack *stack, int line_number);
 void mod(Stack *stack, int line_number);
+void setStackMode(int line_number);
+void setQueueMode(Stack **stack, int line_number);
 void pstr(Stack *stack);
-
+void rotr(Stack **stack, int line_number);
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer

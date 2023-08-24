@@ -48,6 +48,54 @@ result = dividend % divisor;
 push(stack, result);
 }
 
+/**
+ * setStackMode - Sets the format of the data to a stack (LIFO).
+ * @stack: Double pointer to the top of the stack.
+ * @line_number: Line number of the opcode in the Monty file.
+ */
+void setStackMode(int line_number) {
+(void)line_number; /* Avoid unused parameter warning */
+/* No changes needed for stack mode, as it's the default behavior */
+}
+
+/**
+ * setQueueMode - Sets the format of the data to a queue (FIFO).
+ * @stack: Double pointer to the top of the stack.
+ * @line_number: Line number of the opcode in the Monty file.
+ */
+void setQueueMode(Stack **stack, int line_number) {
+(void)line_number; /* Avoid unused parameter warning */
+
+if (*stack && (*stack)->top) {
+Node *last = (*stack)->top;
+while (last->next) {
+last = last->next;
+}
+last->next = (*stack)->top;
+(*stack)->top = (*stack)->top->next;
+last->next->next = NULL;
+}
+}
+
+void rotr(Stack **stack, int line_number) {
+(void)line_number; /* Avoid unused parameter warning */
+
+if (*stack && (*stack)->top && (*stack)->top->next) {
+Node *temp = (*stack)->top;
+Node *new_top = NULL;
+        
+while (temp->next) {
+new_top = temp;
+temp = temp->next;
+}
+
+new_top->next = NULL;
+temp->next = (*stack)->top;
+(*stack)->top = temp;
+}
+}
+
+
 void mul(Stack *stack, int line_number) {
 int factor;
 int product;

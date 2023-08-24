@@ -79,6 +79,12 @@ add(stack, line_number);
 pchar(stack, line_number);
 } else if (strcmp(opcode, "nop") == 0) { /* Implement nop operation */
 nop(stack);
+} else if (strcmp(opcode, "stack") == 0) {
+setStackMode(line_number);
+continue;
+} else if (strcmp(opcode, "queue") == 0) {
+setQueueMode(&stack, line_number);
+continue;
 } else {
 fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 freeStack(stack);
