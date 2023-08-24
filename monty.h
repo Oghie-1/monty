@@ -23,7 +23,9 @@ void pint(Stack *stack);
 void freeStack(Stack *stack);
 void printStack(Stack *stack);
 int main(int argc, char *argv[]);
-void swap(Stack *stack);
+void swap(Stack *stack, int line_number);
+void add(Stack *stack, int line_number);
+void nop();
 
 
 /**
