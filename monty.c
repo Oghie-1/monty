@@ -4,16 +4,18 @@
 #include <string.h>
 
 
-void printStack(Stack *stack) {
+void printStack(Stack *stack)
+{
 Node *current = stack->top;
-while (current != NULL) {
+while (current != NULL)
+{
 printf("%d\n", current->data);
 current = current->next;
 }
 }
 
-int main(int argc, char *argv[]) {
-
+int main(int argc, char *argv[])
+{
 FILE *file;
 char line[MAX_LINE_LENGTH];
 int line_number = 0;
@@ -22,19 +24,20 @@ int value;
 char *argument;
 Stack *stack;
 
-if (argc != 2) {
+if (argc != 2)
+{
 fprintf(stderr, "USAGE: %s file\n", argv[0]);
 return EXIT_FAILURE;
 }
 
 file = fopen(argv[1], "r");
-if (!file) {
+if (!file)
+{
 fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 return EXIT_FAILURE;
 }
 
 stack = createStack();
-
 
 while (fgets(line, sizeof(line), file) != NULL) {
 line_number++;
