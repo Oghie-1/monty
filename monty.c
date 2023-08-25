@@ -48,6 +48,7 @@ if (strcmp(opcode, "pstr") == 0) {
 pstr(stack);
 }
 if (strcmp(opcode, "push") == 0) {
+argument = strtok(NULL, "\t\n");
 if (!argument) {
 fprintf(stderr, "L%d: missing argument for push\n", line_number);
 freeStack(stack);
