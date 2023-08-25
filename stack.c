@@ -12,6 +12,11 @@ exit(EXIT_FAILURE);
 stack->top = NULL;
 return stack;
 }
+/**
+ * pchar - prints the char at the top of the stack follow by a new line.
+ * @stack: Double pointer to the top of the stack.
+ * @line_number: Line number of the opcode in the Monty file.
+ */
 
 void pchar(Stack *stack, int line_number) {
 int ascii_value;
